@@ -1,0 +1,47 @@
+----------------------------------------------
+neue move anmelden:
+	bluetooth an
+	move mit usb anschließen
+	cd /home/david/linmctool
+	./linmctool ausführen
+	"PS" (connect) button drücken
+	usb abstöpseln
+	DONE
+----------------------------------------------
+
+move(s) für python scripts vorbereiten:
+	cd /home/david/psmoveapi/build
+	./moved ausführen
+	"PS" button an den einzelnen moves drücken: 
+		moved:New device 0 00:07:04:93:14:0d
+		moved:New device 1 00:07:04:43:df:ae
+	im hintergrund weiterlaufen lassen
+----------------------------------------------
+
+psmove python scripts starten:
+	cd /home/david/psmoveapi/python
+	python move2.py
+----------------------------------------------
+
+
+Tastenbelegung move2.py
+
+1: 2% heller
+2: 2% dunkler
+x: zufalls-farbe
+u: bloody red
+i: snow white
+o: deadly black
+
+k: alternating between bright and dark
+j: smaller steps
+l: bigger steps
+
+modes:
+im jeweiligen mode lässt sich an farbkanal oder alle kanäle gleichzeitig anpassen
+
+0 : global mode
+r: red mode
+g: green mode
+b: blue mode
+

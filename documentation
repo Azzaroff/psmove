@@ -19,7 +19,7 @@ move(s) für python scripts vorbereiten:
 ----------------------------------------------
 
 psmove python scripts starten:
-	cd /home/david/psmoveapi/python
+	cd /home/david/psmoveapi/python/psmove
 	python move2.py
 ----------------------------------------------
 

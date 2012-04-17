@@ -5,9 +5,9 @@ sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', 'build'))
 import pygame
 from pygame.locals import *
 
+import psmove
 import time
 import math
-import psmove
 import random
 
 m1 = psmove.PSMove(0)

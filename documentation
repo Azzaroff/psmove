@@ -11,7 +11,7 @@ neue move anmelden:
 
 move(s) für python scripts vorbereiten:
 	cd /home/david/psmoveapi/build
-	./moved ausführen
+	./moved ausführen (als root)
 	"PS" button an den einzelnen moves drücken: 
 		moved:New device 0 00:07:04:93:14:0d
 		moved:New device 1 00:07:04:43:df:ae

@@ -27,7 +27,7 @@ b2 = b
 done = False
 rumble = False
 step_m = 1
-step = 0.001
+step = 0.00001
 changeU = False
 changeD = False
 changeK = True
@@ -52,7 +52,7 @@ while not done:
              mode = 'b'
           if (event.key == K_k):
              mode = 'k'
-             changeK = True
+             changeK = False
           if (event.key == K_u):
              r = 255
              g = 0
@@ -67,9 +67,9 @@ while not done:
              b = 0
     if m1.poll():
         if key[K_j]:
-            if step - 0.001 >= 0.0: step = step - 0.01
+            if step - 0.00001 >= 0.0: step = step - 0.00001
         if key[K_l]:
-            if step + 0.001 <= 1.0: step = step + 0.01
+            if step + 0.00001 <= 1.0: step = step + 0.00001
 
 
         if mode == '0':
@@ -89,7 +89,6 @@ while not done:
                 else: g = int(float(g) - step_m)
                 if (b - step_m) < 0: b = 0
                 else: b = int(float(b) - step_m)
-            print r,g,b 
         if mode == 'r':
 
             if key[K_1]:
@@ -113,7 +112,7 @@ while not done:
         if mode == 'b':
 
             if key[K_1]:
-                if b + step_m > 255: b = b2
+                if b + step_m > 255: b = 255
                 else: b = int(float(b) + step_m)
             
             if key[K_2]:
@@ -123,19 +122,19 @@ while not done:
         if mode == 'k':
             if changeK:
                 if r + step*r2 > r2: r = r2
-                else: r = int(float(r) + step*r2)
+                else: r = int(round(float(r) + step*r2))
                 if g + step*g2 > g2: g = g2
-                else: g = int(float(g) + step*g2)
+                else: g = int(round(float(g) + step*g2))
                 if b + step*b2 > b2: b = b2
-                else: b = int(float(b) + step*b2)
+                else: b = int(round(float(b) + step*b2))
                 if r == r2 and g == g2 and b == b2: changeK = False
             else:
                 if r - step*r2 < 0: r = 0
-                else: r = int(float(r) - step*r2)
+                else: r = int(round(float(r) - step*r2))
                 if g - step*g2 < 0: g = 0
-                else: g = int(float(g) - step*g2)
+                else: g = int(round(float(g) - step*g2))
                 if b - step*b2 < 0: b = 0
-                else: b = int(float(b) - step*b2)
+                else: b = int(round(float(b) - step*b2))
                 if r == 0 and g == 0 and b == 0: changeK = True
         
             
@@ -149,18 +148,23 @@ while not done:
 	    b2 = b
 
 
-	    buttons = m1.get_buttons()
-	    if buttons & psmove.Btn_TRIANGLE:
-	      print 'triangle pressed'
-              rumble = not rumble
-              time.sleep(.2)
+	buttons = m1.get_buttons()
+	if buttons & psmove.Btn_TRIANGLE:
+	  print 'triangle pressed'
+          rumble = not rumble
+          time.sleep(.2)
 
-	    if rumble:
-	      m1.set_rumble(255)
-            else:
-	      m1.set_rumble(0)
+	if rumble:
+	  m1.set_rumble(255)
+        else:
+	  m1.set_rumble(0)
 	    
-		    
+    		    
+    print r,g,b 
+    print "---"
+    print r2,g2,b2 
+    print changeK 
+    print step 
     m1.set_leds(r, g, b)
     time.sleep(.002)
     m1.update_leds()

@@ -27,10 +27,10 @@ b2 = b
 done = False
 rumble = False
 step_m = 1
-step = 0.00001
+step = 0.005
 changeU = False
 changeD = False
-changeK = True
+changeK = False
 mode = '0'
 while not done:
     key = pygame.key.get_pressed()
@@ -65,7 +65,7 @@ while not done:
              r = 0
              g = 0
              b = 0
-    if m1.poll():
+    if True:    
         if key[K_j]:
             if step - 0.00001 >= 0.0: step = step - 0.00001
         if key[K_l]:
@@ -120,21 +120,22 @@ while not done:
                 else: b = int(float(b) - step_m)
         
         if mode == 'k':
+            m = max(r2,max(g2,b2))
             if changeK:
-                if r + step*r2 > r2: r = r2
-                else: r = int(round(float(r) + step*r2))
-                if g + step*g2 > g2: g = g2
-                else: g = int(round(float(g) + step*g2))
-                if b + step*b2 > b2: b = b2
-                else: b = int(round(float(b) + step*b2))
+                if r + step*m > r2: r = r2
+                else: r = int(round(float(r) + step*m))
+                if g + step*m > g2: g = g2
+                else: g = int(round(float(g) + step*m))
+                if b + step*m > b2: b = b2
+                else: b = int(round(float(b) + step*m))
                 if r == r2 and g == g2 and b == b2: changeK = False
             else:
-                if r - step*r2 < 0: r = 0
-                else: r = int(round(float(r) - step*r2))
-                if g - step*g2 < 0: g = 0
-                else: g = int(round(float(g) - step*g2))
-                if b - step*b2 < 0: b = 0
-                else: b = int(round(float(b) - step*b2))
+                if r - step*m < 0: r = 0
+                else: r = int(round(float(r) - step*m))
+                if g - step*m < 0: g = 0
+                else: g = int(round(float(g) - step*m))
+                if b - step*m < 0: b = 0
+                else: b = int(round(float(b) - step*m))
                 if r == 0 and g == 0 and b == 0: changeK = True
         
             
@@ -147,7 +148,7 @@ while not done:
 	    g2 = g
 	    b2 = b
 
-
+    if m1.poll():
 	buttons = m1.get_buttons()
 	if buttons & psmove.Btn_TRIANGLE:
 	  print 'triangle pressed'

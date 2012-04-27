@@ -18,33 +18,37 @@ else:
 
 color_switch = True
 step_m = 1
+r = random.randint(0, 255)
+g = random.randint(0, 255)
+b = random.randint(0, 255)
+r2 = r
+g2 = g
+b2 = b
 
 while True:
     if move.poll():
 
         print 'gyro:', (move.ax, move.ay, move.az)
 	
-	if key[K_1]:
-                if r + step_m > r2: r = r2
-                else: r = int(float(r) + step_m)
-                if g + step_m > g2: g = g2
-                else: g = int(float(g) + step_m)
-                if b + step_m > b2: b = b2
-                else: b = int(float(b) + step_m)
-            
-            if key[K_2]:
-                if (r - step_m) < 0: r = 0
-                else: r = int(float(r) - step_m)
-                if (g - step_m) < 0: g = 0
-                else: g = int(float(g) - step_m)
-                if (b - step_m) < 0: b = 0
-                else: b = int(float(b) - step_m)
-	#if ( float(move.ax) > -4200.0 and move.ax < 300):
+	if ( float(move.ax) > -4501.0 and move.ax < 300):
+                r = round(float(move.ax + 4600)/4800.0 * r2)              
+                g = round(float(move.ax + 4600)/4800.0 * g2)               
+                b = round(float(move.ax + 4600)/4800.0 * b2)               
+		if r > r2: r = r2
+		if g > g2: g = g2
+		if b > b2: b = b2
+		move.set_leds(int(r), int(g), int(b))
+        	move.update_leds()
+        elif (move.ax > -4600 and move.ax < -4500):
+		move.set_leds(0, 0, 0)
+        	move.update_leds()
+	
+        #if ( float(move.ax) > -4200.0 and move.ax < 300):
         #        r = round(float(move.ax + 4600)/4800.0 * 255)                 
 	#	if r > 255: r = 255
 	#	move.set_leds(int(r), 0, 0)
         #	move.update_leds()
-        #else:
+        #elif (move.ax > 4070):
 	#	move.set_leds(0, 0, 0)
         #	move.update_leds()
 
@@ -61,4 +65,4 @@ while True:
 	elif (move.az < -4450):
 		color_switch = True        
 		
-	time.sleep(0.2)
+	#time.sleep(0.2)

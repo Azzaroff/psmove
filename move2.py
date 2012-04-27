@@ -167,7 +167,7 @@ while not done:
     print changeK 
     print step 
     m1.set_leds(r, g, b)
-    time.sleep(.002)
+    time.sleep(.008)
     m1.update_leds()
 
 

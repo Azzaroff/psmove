@@ -45,3 +45,9 @@ r: red mode
 g: green mode
 b: blue mode
 
+Accelerometer Fun:
+	cd /home/david/psmoveapi/python/psmove
+	python accel_fun.py
+
+vom Körper weg kippen = Hellifkeit
+nach rechts kippen = random color

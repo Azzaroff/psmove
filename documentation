@@ -49,5 +49,20 @@ Accelerometer Fun:
 	cd /home/david/psmoveapi/python/psmove
 	python accel_fun.py
 
-vom Körper weg kippen = Hellifkeit
+vom Körper weg kippen = Helligkeit
 nach rechts kippen = random color
+
+shake.py:
+	cd /home/david/psmoveapi/python/psmove
+	python shake.py
+
+schütteln = random color
+
+step_m = 0.000.... | hier die geschwindigkeit für das dunklerwerden ändern
+
+Achsen ändern:
+
+in dieser Zeile:
+        if (abs(move.gz) > 6000):
+
+das move.gz zu move.gy oder move.gx machen!	
